@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Titre</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div class="login">
+    <img class="img" src="https://clinique-cdm.com/wp-content/uploads/2019/08/heartbeat.png" alt="Image">
+    <br>
+    <div class="titre">Connexion</div>
+    <div class="partieA">
+        <!--    <form>-->
+        <div><input name="identif" placeholder="ID" required=""></div>
+        <div><input type="password" name="mdp" placeholder="Mot de passe" required=""></div>
+        <button class="butLog" onclick="init()">Login</button>
+        <!--    </form>-->
+    </div>
+    <div class="partieB" >
+        <form>
+            <div><img class="img" id="qr" src="data:image/png;base64,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"></div>
+            <div><input type="text" name="code" placeholder="Code Google" required=""></div>
+            <button class="butLog" onclick="valid()">Envoyer</button>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+
+</body>
+</html>
