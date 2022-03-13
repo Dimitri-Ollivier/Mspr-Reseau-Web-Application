@@ -1,0 +1,26 @@
+{
+  "name": "mspr-web-app",
+  "version": "1.0.0",
+  "description": "Web app for the Mspr Reseau",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dimitri-Ollivier/Mspr-Reseau-Web-Application.git"
+  },
+  "author": "Dimitri Moussa Thibaud Rania",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dimitri-Ollivier/Mspr-Reseau-Web-Application/issues"
+  },
+  "homepage": "https://github.com/Dimitri-Ollivier/Mspr-Reseau-Web-Application#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mariadb": "^3.0.0"
+  }
+}
