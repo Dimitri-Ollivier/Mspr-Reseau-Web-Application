@@ -29,8 +29,36 @@ router.post('/login', async function (req, res) {
     } catch (error) {
         res.status(400).send(error.message)
     }
+});
 
-    res.status(200).json({id: req.params.email})
-})
+router.get('/key', async function (req, res) {
+    try {
+        const {email} = req.body;
+
+        const sqlGetKey = 'SELECT key FROM user WHERE email=?';
+        const rows = await pool.query(sqlGetKey, email);
+        if(rows){
+            res.status(200).json(res);
+        }
+        res.status(200).send(`User with email ${email} has no key`);
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+});
+
+router.put('/putKey', async function (req, res) {
+    try {
+        const {email, key} = req.body;
+
+        const sqlPutKey = 'INSERT INTO user (key) VALUES (?) WHERE email=?';
+        const rows = await pool.query(sqlPutKey, [key, email]);
+        if(rows){
+            res.status(200).json(res);
+        }
+        res.status(200).send(`User with email ${email} has no key`);
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+});
 
 module.exports = router;

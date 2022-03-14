@@ -1,20 +1,33 @@
 const speakeasy = require('speakeasy')
+const qrcode = require('qrcode')
 
-function init() { // A lancer si la combinaison login mdp est bon et si il n'a pas encore de clée
+async function init() { // A lancer si la combinaison login mdp est bon et si il n'a pas encore de clée
+    const rawResponse = await fetch('http://localhost:3000/user/login', {
+        method: 'POST',
+        body: JSON.stringify({email: document.getElementsByName("email"), b: document.getElementsByName("enteredPassword")})
+    });
+    const passOk = await rawResponse.json();
 
-    const qrcode = new QRCode("qrcode")
+
+    if (passOk){
+        console.log("c'est ok gg")
+    }
+        // si clé on lance valide avec la clé en bdd
 
     const qr = document.getElementById("qr");
 
     let secret = speakeasy.generateSecret({
-        name: "TEST"
+        name: "Connexion_Clinique"
     })
     console.log(secret)
+
+    // ajouter secret ascii en bdd
 
     qrcode.toDataURL(secret.otpauth_url, function (err, data) {
         qr.src = data
     })
     qr.style.display = "inline"
+    //qr.innerHTML = data;
 }
 
 function valid() { // A lancer si la combinaison login mdp est bon et si il a une clée
